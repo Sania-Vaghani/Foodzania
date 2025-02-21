@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Menu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: #f6f6f6;
+            position: relative;
+        }
+
+        .container {
+            width: 428px;
+            margin: auto;
+            background: white;
+            padding-bottom: 30px; /* Prevents overlap with cart */
+            overflow: hidden;
+            position: relative;
+        }
+
+        header {
+            background: linear-gradient(to bottom, #c8e95e, white);
+            text-align: center;
+            padding: 20px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            position: relative;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 15px;
+            top: 20px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .tags span {
+            display: inline-block;
+            background: #ffffff;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 7px;
+            font-size: 14px;
+        }
+
+        .rating img {
+            width: 210px;
+            margin-top: 5px;
+        }
+
+        .menu {
+            padding: 10px;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .menu-item img {
+            width: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        
+        /* Add/Counter Button */
+        .add-btn, .counter {
+            background: #E8F3D8;
+            color: #8CC13E;
+            border: 2px solid #8CC13E;
+            padding: 6px 12px;
+            border-radius: 5px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 80px;
+        }
+
+        .counter {
+            display: none;
+        }
+
+        .counter button {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: #8CC13E;
+            cursor: pointer;
+        }
+
+        /* Cart Bar */
+        .cart-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 428px;
+            background: #8CC13E;
+            color: white;
+            padding: 17px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            font-size: 18px;
+            display: none;
+        }
+
+        .cart-bar span {
+            font-weight: 500;
+        }
+
+        .cart-bar button {
+            background: none;
+            border: none;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <button class="back-btn" onclick="window.location.href='phone9.html'">
+                <img src="back_button.png">
+            </button>
+            
+            <h1>La Pinoz’s Pizza</h1>
+            <div class="tags">
+                <span>Pizza</span>
+                <span>Pasta</span>
+                <span>Meal</span>
+            </div>
+            <div class="rating">
+                <img src="pizza_rate.png">
+            </div>
+        </header>
+
+        <div class="menu">
+            <div class="menu-item">
+                <img src="order1.png">
+                <button class="add-btn" onclick="addToCart(this)">ADD +</button>
+                <div class="counter">
+                    <button onclick="updateCount(this, -1)">−</button>
+                    <span>1</span>
+                    <button onclick="updateCount(this, 1)">+</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="order2.png">
+                <button class="add-btn" onclick="addToCart(this)">ADD +</button>
+                <div class="counter">
+                    <button onclick="updateCount(this, -1)">−</button>
+                    <span>1</span>
+                    <button onclick="updateCount(this, 1)">+</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="order3.png">
+                <button class="add-btn" onclick="addToCart(this)">ADD +</button>
+                <div class="counter">
+                    <button onclick="updateCount(this, -1)">−</button>
+                    <span>1</span>
+                    <button onclick="updateCount(this, 1)">+</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="order5.png">
+                <button class="add-btn" onclick="addToCart(this)">ADD +</button>
+                <div class="counter">
+                    <button onclick="updateCount(this, -1)">−</button>
+                    <span>1</span>
+                    <button onclick="updateCount(this, 1)">+</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="order6.png">
+                <button class="add-btn" onclick="addToCart(this)">ADD +</button>
+                <div class="counter">
+                    <button onclick="updateCount(this, -1)">−</button>
+                    <span>1</span>
+                    <button onclick="updateCount(this, 1)">+</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="order7.png">
+                <button class="add-btn" onclick="addToCart(this)">ADD +</button>
+                <div class="counter">
+                    <button onclick="updateCount(this, -1)">−</button>
+                    <span>1</span>
+                    <button onclick="updateCount(this, 1)">+</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="order8.png">
+                <button class="add-btn" onclick="addToCart(this)">ADD +</button>
+                <div class="counter">
+                    <button onclick="updateCount(this, -1)">−</button>
+                    <span>1</span>
+                    <button onclick="updateCount(this, 1)">+</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="order9.png">
+                <button class="add-btn" onclick="addToCart(this)">ADD +</button>
+                <div class="counter">
+                    <button onclick="updateCount(this, -1)">−</button>
+                    <span>1</span>
+                    <button onclick="updateCount(this, 1)">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-bar">
+        <span><span id="cart-items">0</span> Item | ₹ <span id="cart-price">0</span></span>
+        <button onclick="window.location.href='phone23.html'">View Cart</button>
+    </div>
+    
+
+    <script>
+        let cartCount = 0;
+        let cartTotal = 0;
+        const pricePerItem = 120; // Example price
+
+        function addToCart(button) {
+            let counter = button.nextElementSibling;
+            button.style.display = "none";
+            counter.style.display = "flex";
+            updateCart(1);
+        }
+
+        function updateCount(button, change) {
+            let counterDiv = button.parentElement;
+            let countSpan = counterDiv.querySelector("span");
+            let newCount = parseInt(countSpan.innerText) + change;
+
+            if (newCount === 0) {
+                counterDiv.style.display = "none";
+                counterDiv.previousElementSibling.style.display = "block";
+            }
+
+            countSpan.innerText = newCount;
+            updateCart(change);
+        }
+
+        function updateCart(change) {
+            cartCount += change;
+            cartTotal += change * pricePerItem;
+
+            document.getElementById("cart-items").innerText = cartCount;
+            document.getElementById("cart-price").innerText = cartTotal;
+
+            document.querySelector(".cart-bar").style.display = cartCount > 0 ? "flex" : "none";
+        }
+    </script>
+</body>
+</html>

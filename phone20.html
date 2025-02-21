@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Order</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            background: #f5f8eb;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Header */
+        .header {
+            width: 100%;
+            padding: 20px;
+            background: #eef5da;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .back-arrow {
+            position: absolute;
+            left: 15px;
+            cursor: pointer;
+        }
+
+        .back-arrow img {
+            width: 28px;
+            margin-top: 10px;
+        }
+
+        /* Map Section */
+        .map-container {
+            width: 100%;
+            height: 300px;
+            background: lightgray;
+            overflow: hidden;
+            border-bottom: 4px solid #8CC13E;
+            border-top: 4px solid #8CC13E;
+        }
+
+        .map-container img {
+            width: 100%;
+            object-fit: cover;
+        }
+
+        /* Delivery Info */
+        .delivery-info {
+            width: 100%;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .delivery-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .call-btn {
+            margin-left: auto;
+            cursor: pointer;
+        }
+
+        /* Order Details */
+        .order-details {
+            width: 90%;
+            margin-top: 20px;
+        }
+
+        .order-details h3 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .items-btn {
+            background: #eee;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .items-list {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        .items-list img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        /* Go Back Button */
+        .go-back {
+            position: absolute;
+            bottom: 20px;
+            width: 90%;
+            background: #8CC13E;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            border-radius: 30px;
+            font-size: 22px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <span class="back-arrow" onclick="window.location.href='phone19.html'">
+            <img src="arrowleft.png" alt="Back">
+        </span>
+        
+        TRACK ORDER
+    </div>
+
+    <!-- Map Section -->
+    <div class="map-container">
+        <img src="map.png" alt="Map">
+    </div>
+
+    <!-- Delivery Info -->
+    <div class="delivery-info">
+        <img src="driver.png" alt="Delivery Person">
+        <div>
+            <h4 style="font-size: 19px;">Rohan Kunar</h4>
+            <p style="font-size: 15px; color: gray;">Delivery Hero</p>
+        </div>
+        <span class="call-btn"><img src="p5.png" alt="Call"></span>
+    </div>
+
+    <!-- Order Details -->
+    <div class="order-details">
+        <h3>La Pino’z Pizza</h3>
+        <span class="items-btn">2 Items</span>
+        <div class="items-list">
+            <img src="t1.png" alt="Item 1">
+            <img src="t2.png" alt="Item 2">
+        </div>
+    </div>
+
+    <!-- Go Back Button -->
+    <div class="go-back" onclick="goHome()">GO BACK HOME</div>
+    <script>
+        function goHome() {
+            window.location.href = "phone9.html"; // Redirects to phone9.html
+        }
+    </script>
+    
+</body>
+</html>

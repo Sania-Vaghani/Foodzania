@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=390, height=844, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: url('11bg.png') no-repeat center center fixed;
+            background-size: cover;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: auto; /* Allow scrolling */
+            padding-bottom: 80px; /* Prevent menu items from being covered */
+        }
+
+        /* Profile Section */
+        .profile {
+            text-align: center;
+            margin-top: 60px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .profile img {
+            width: 159px;
+            height: 159px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+        }
+
+        .profile h2 {
+            font-size: 25px;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .profile p {
+            font-size: 18px;
+            color: gray;
+        }
+
+        /* Menu List */
+        .menu {
+            width: 85%;
+            margin-top: 20px;
+            position: relative;
+            z-index: 10; /* Ensure menu is above other elements */
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 50px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 20px;
+            margin-bottom: 12px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer; /* Make it clear it's clickable */
+        }
+
+        .menu-item img {
+            width: 38px;
+            height: 38px;
+        }
+
+        /* Logout Button */
+        .logout-btn {
+            background: #8CC13E;
+            color: white;
+            border: none;
+            width: 225px;
+            height: 57px;
+            text-align: center;
+            font-size: 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 400;
+            margin-top: 13px;
+            z-index: 10;
+        }
+
+        /* Dish Image */
+        .dish {
+            position: absolute;
+            bottom: -50px;
+            z-index: 0; /* Lower priority to avoid overlap */
+        }
+
+        /* Bottom Navbar */
+        .bottom-nav {
+            position: fixed;
+            z-index: 1000;
+            bottom: 0;
+            width: 93%;
+            max-width: 420px;
+            background: #E8F3D8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 3px 25px;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #8CC13E;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .nav-item img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .home-icon {
+            background: #8CC13E;
+            padding: 9px;
+            border-radius: 50%;
+            transform: translateY(-25px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .home-text {
+            margin-top: -24px;
+            font-size: 18px;
+            font-weight: 400;
+            color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="profile">
+        <img src="profile.png" alt="Profile Picture">
+        <h2>RIYA SHARMA</h2>
+        <p>riyavsharma123@gmail.com</p>
+    </div>
+
+    <div class="menu">
+        <div class="menu-item" id="myOrder"><img src="p1.png"> My Order</div>
+        <div class="menu-item" id="myAddress"><img src="p2.png"> My Address</div>
+        <div class="menu-item" id="paymentMethod"><img src="p3.png"> Payment Method</div>
+        <div class="menu-item" id="settings"><img src="p4.png"> Settings</div>
+        <div class="menu-item"><img src="p5.png"> Contact Us</div>
+        <div class="menu-item" id="helpFaqs"><img src="p6.png"> Help and FAQs</div>
+    </div>
+
+    <!-- Logout Button -->
+    <button class="logout-btn" id="logoutBtn">Log Out</button>
+
+    <!-- Dish Image Overlapping Menu -->
+    <img src="dish.png" alt="Dish Image" class="dish">
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <a href="phone9.html" class="nav-item">
+            <img src="home2.png" alt="Home">
+        </a>
+        <a href="phone10.html" class="nav-item">
+            <img src="searchH.png" alt="Search">
+        </a>
+        <a href="phone23.html" class="nav-item">
+            <img src="buy.png" alt="Cart">
+        </a>
+        <a href="#" class="nav-item home">
+            <div class="home-icon">
+                <img src="her.png" alt="Profile" style="width: 45px;height:45px;">
+            </div>
+            <span class="home-text">Profile</span>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function addNavigation(id, url) {
+                let element = document.getElementById(id);
+                if (element) {
+                    element.addEventListener("click", function () {
+                        window.location.href = url;
+                    });
+                }
+            }
+
+            addNavigation("myOrder", "phone16.html");
+            addNavigation("myAddress", "phone12.html");
+            addNavigation("paymentMethod", "phone13.html");
+            addNavigation("settings", "phone14.html");
+            addNavigation("helpFaqs", "phone15.html");
+
+            // Logout functionality
+            let logoutBtn = document.getElementById("logoutBtn");
+            if (logoutBtn) {
+                logoutBtn.addEventListener("click", function () {
+                    alert("You have been logged out!");
+                    window.location.href = "login.html";
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>

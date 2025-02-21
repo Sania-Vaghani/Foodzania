@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=430, height=932, initial-scale=1.0">
+    <title>Settings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: url('12bg.png') no-repeat center center fixed;
+            background-size: cover;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 20px;
+            position: relative;
+            margin-top: 10px;
+        }
+
+        .back-arrow {
+            position: absolute;
+            left: 20px;
+        }
+
+        .back-arrow img {
+            height: 35px;
+        }
+
+        .header {
+            background-color: #8CC13E;
+            color: white;
+            font-size: 21px;
+            font-weight: 500;
+            padding: 3px 50px;
+            border-radius: 10px;
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            line-height: 45px;
+        }
+
+        .settings-list {
+            width: 90%;
+        }
+
+        .settings-item {
+            padding: 15px 0;
+            border-top: 1px solid #c3c3c3;
+        }
+
+        .settings-item:first-child {
+            border-top: none;
+        }
+
+        .settings-item h2 {
+            font-size: 19px;
+            font-weight: 500;
+            color: #000;
+        }
+
+        .settings-item p {
+            font-size: 15px;
+            color: #818181;
+            margin-top: -2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="phone11.html" class="back-arrow"><img src="backarrow.png"></a>
+        <div class="header">SETTINGS</div>
+    </div>
+
+    <div class="settings-list">
+        <div class="settings-item">
+            <h2>Add a Place</h2>
+            <p>In case we're missing something</p>
+        </div>
+        <div class="settings-item">
+            <h2>Places You've Added</h2>
+            <p>See all the places you've added so far</p>
+        </div>
+        <div class="settings-item">
+            <h2>Edit Profile</h2>
+            <p>Change your name, description and profile photo</p>
+        </div>
+        <div class="settings-item">
+            <h2>Notification Settings</h2>
+            <p>Define what emails and notifications you want to see</p>
+        </div>
+        <div class="settings-item">
+            <h2>Account Settings</h2>
+            <p>Change your email or delete your account</p>
+        </div>
+        <div class="settings-item">
+            <h2>App Permissions</h2>
+            <p>Open your phone settings</p>
+        </div>
+    </div>
+</body>
+</html>

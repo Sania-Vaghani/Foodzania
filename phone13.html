@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=430, height=932, initial-scale=1.0">
+    <title>Manage Payment Methods</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: url('12bg.png') no-repeat center center fixed;
+            background-size: cover;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .back-arrow {
+            position: absolute;
+            left: 20px;
+        }
+
+        .back-arrow img {
+            height: 35px;
+        }
+
+        .header {
+            background-color: #8CC13E;
+            color: white;
+            font-size: 19px;
+            font-weight: 500;
+            padding: 12px;
+            border-radius: 10px;
+            width: 300px;
+            margin-left: 20px;
+        }
+
+        .payment-methods {
+            width: 90%;
+            margin-top: 20px;
+        }
+
+        .payment-section {
+            margin-top: 15px;
+            font-size: 19px;
+            font-weight: 500;
+            text-transform: uppercase;
+            color: #666;
+            border-top: 1px solid #939393;
+            padding-top: 10px;
+        }
+
+        .payment-box {
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .payment-box img {
+            height: 45px;
+            margin-right: 10px;
+        }
+
+        .payment-box div {
+            display: flex;
+            align-items: center;
+        }
+
+        .payment-box span {
+            font-size: 19px;
+            font-weight: 500;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="phone11.html" class="back-arrow"><img src="backarrow.png"></a>
+        <div class="header">MANAGE PAYMENT METHODS</div>
+    </div>
+
+    <div class="payment-methods">
+        <div class="payment-section">Credit Card</div>
+        <div class="payment-box">
+            <div>
+                <img src="pay.png" alt="Credit Card">
+                <span>Add credit or debit cards</span>
+            </div>
+            <span style="color: #8CC13E;">ADD</span>
+        </div>
+
+        <div class="payment-section">UPI</div>
+        <div class="payment-box">
+            <div>
+                <img src="upi.png" alt="UPI">
+                <span>Add new UPI ID</span>
+            </div>
+            <span style="color: #8CC13E;">ADD</span>
+        </div>
+
+        <div class="payment-section">Wallets</div>
+        <div class="payment-box">
+            <div>
+                <img src="paytm.png" alt="Paytm">
+                <span>Link your Paytm wallet</span>
+            </div>
+            <span style="color: #8CC13E;">ADD</span>
+        </div>
+    </div>
+</body>
+
+</html>

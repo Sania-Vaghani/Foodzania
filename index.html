@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Waterfall&display=swap" rel="stylesheet">
+    <title>Foodzania Logo Page</title>
+    <style>
+        /* Body styling */
+        body {
+            margin: 0;
+            padding: 0;
+            width: 429px; /* Fixed width for iPhone */
+            height: 926px; /* Fixed height for iPhone */
+            background: url(bg.png) no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Logo container styling */
+        .logo-container {
+            text-align: center;
+            opacity: 0;
+            /* Initially hidden */
+            transform: scale(0.8);
+            /* Slightly scaled down */
+            animation: fadeIn 2s ease-in-out 1s forwards;
+            /* Delay of 1s */
+        }
+
+        .logo-container img {
+            width: auto;
+            height: 300px;
+        }
+
+        .logo-container h1 {
+            color: #fff;
+            font-size: 100px;
+            margin-top: 10px;
+            font-family: "Waterfall", cursive;
+            font-weight: 400;
+        }
+
+        /* Animation keyframes */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+                /* Restore scale */
+            }
+        }
+    </style>
+</head>
+
+<body> 
+    <div class="logo-container">
+        <!-- Logo image -->
+        <img src="logo.png" alt="Foodzania Logo">
+        <!-- App name -->
+        <h1>Foodzania</h1>
+    </div>
+    <script>
+        // Wait for the animation to complete, then navigate
+        setTimeout(function () {
+            window.location.href = "phone2.html"; // Change this to your actual page
+        }, 4000); 
+    </script>
+    
+</body>
+
+</html>

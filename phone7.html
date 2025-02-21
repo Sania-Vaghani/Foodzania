@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Screen</title>
+
+    <style>
+        body {
+            background: url('7bg.png') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            width: 428px;
+            /* Fixed width for iPhone */
+            height: 926px;
+            /* Fixed height for iPhone */
+            display: flex;
+            align-items: center;
+        }
+
+        .content {
+            text-align: center;
+            padding: 20px;
+            font-family: "Poppins", serif;
+            font-weight: 300;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s;
+        }
+
+        .overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .content h1 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 10px;
+            margin-top: 90px;
+        }
+
+        .content p {
+            font-size: 18px;
+            color: #8a8a8a;
+            font-weight: 400;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+        }
+
+        button {
+            background: #BADA8B;
+            color: white;
+            font-family: "Poppins", serif;
+            font-weight: 500;
+            font-size: 21px;
+            padding: 12px 30px;
+            border: 2px solid #8CC13E;
+            border-radius: 95px;
+            display: flex;
+            align-self: center;
+            justify-content: center;
+            text-decoration: none;
+            width: 370px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .modal {
+            background: #1d1d1d;
+            color: #fff;
+            height: 700px;
+            width: 340px;
+            border-radius: 47px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal img {
+            width: 150px;
+            margin: 10px auto;
+        }
+
+        .modal h2 {
+            margin: 20px 0;
+            font-family: "Poppins", serif;
+            font-weight: 300;
+            font-style: normal;
+            font-size: 23px;
+        }
+
+        .modal p {
+            font-family: "Poppins", serif;
+            font-weight: 300;
+            font-style: normal;
+            font-size: 19px;
+        }
+
+        .location-options {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .location-options div {
+            text-align: center;
+            color: #fff;
+        }
+
+        .button2 {
+            font-family: "Poppins", serif;
+            font-weight: 300;
+            font-style: normal;
+            font-size: 19px;
+            color: #8CC13E;
+            line-height: 40px;
+            margin-top: 40px;
+        }
+
+        .terms {
+            font-size: 10px !important;
+            margin-top: 30px;
+            color: #aaa;
+        }
+
+        /* Button to Open Modal */
+        .open-btn {
+            padding: 10px 20px;
+            background-color: #8CC13E;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Modal Container */
+        .modal2 {
+            position: fixed;
+            bottom: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 428px;
+            height: 598px;
+            border: 2px solid #8CC13E;
+            background: white;
+            border-radius: 35px 35px 0 0;
+            box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
+            transition: bottom 0.6s ease-out;
+        }
+
+        /* Show Modal */
+        .modal2.show {
+            bottom: 0;
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: -95px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #8CC13E;
+            width: 61px;
+            height: 61px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            cursor: pointer;
+        }
+
+        .close-btn img {
+            align-self: center;
+            margin-top: 0px;
+        }
+
+        /* Modal Content */
+        .modal2-content {
+            padding: 60px 20px 20px;
+            text-align: center;
+            margin-top: -35px;
+        }
+
+        .modal2-content h2 {
+            margin-bottom: 20px;
+            font-family: "Poppins", serif;
+            font-weight: 600;
+            font-style: normal;
+            font-size: 23px;
+            margin-left: -170px;
+        }
+
+        /* Search Bar */
+        .search-bar {
+            display: flex;
+            align-items: center;
+            border: 2px solid #000000;
+            border-radius: 28px;
+            padding: 10px;
+            margin-bottom: 20px;
+            height: 36px;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            flex: 1;
+            font-size: 16px;
+            padding-left: 10px;
+        }
+
+        /* Location Permission */
+        .location-permission {
+            color: #8CC13E;
+            font-family: "Poppins", serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 20px;
+            padding-left: 30px;
+            margin-top: 30px;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .location-permission p {
+            font-family: "Poppins", serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 14px;
+            color: #666;
+            text-align: left;
+            margin-top: 5px;
+        }
+
+        /* Saved Address */
+        .saved-address {
+            margin-top: 18px;
+            font-family: "Poppins", serif;
+            font-weight: 500;
+            font-style: normal;
+            color: #8CC13E;
+            text-align: left;
+            padding-left: 30px;
+        }
+
+        .imgstyle {
+            margin-left: 8px;
+            position: absolute;
+        }
+
+        .fontstyle {
+            font-family: "Poppins", serif;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 23px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Content Section -->
+    <div class="content">
+        <h1>We Don’t have your location, yet!</h1>
+        <p>Set your location to start exploring restaurants near you</p>
+
+        <div class="buttons">
+            <button class="button" id="enableLocation">Enable Device Location</button>
+            <button class="open-btn,button" onclick="openModal()">Enter Location Manually</button>
+        </div>
+
+        <p style="font-size: 12px; color: #666; margin-top: 50px;">
+            We only access your location while using the app to improve your experience.
+        </p>
+    </div>
+
+    <div class="overlay" id="overlay">
+        <div class="modal">
+            <img src="locIcon.png" style="height: 50px; width:auto">
+            <h2>Allow Foodzania to access this device's location</h2>
+            <hr>
+            <div class="location-options">
+                <div>
+                    <img src="loc1.png" alt="Precise">
+                    <p>Precise</p>
+                </div>
+                <div>
+                    <img src="loc2.png" style="height: 151px;" alt="Approximate">
+                    <p>Approximate</p>
+                </div>
+            </div>
+            <hr>
+            <div class="button2">
+                While using the app<br>
+                Only this<br>
+                Don't allow<br>
+            </div>
+
+            <p class="terms">By continuing, you agree to our <br>terms of service,privacy policy, and content policy.
+            </p>
+        </div>
+    </div>
+
+    <div class="modal2" id="locationModal">
+        <button class="close-btn" onclick="closeModal()"><img src="crossbtn.png"></button>
+        <div class="modal2-content">
+            <h2>Select a Location<img class="imgstyle" src="loc.png"></h2>
+
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <span><img src="search.png" style="margin-left: 10px;"></span>
+                <input type="text" placeholder="Search for area, street name..." id="searchInput" class="fontstyle">
+
+            </div>
+
+            <!-- Location Permission -->
+            <div class="location-permission" onclick="openModal()">
+                Location permission is enabled >
+                <p>Tap here to enable permission for a better experience</p>
+            </div>
+
+            <!-- Saved Address -->
+            <div class="saved-address">Saved Address</div>
+        </div>
+    </div>
+
+    <script>
+        const enableLocationButton = document.getElementById('enableLocation');
+        const overlay = document.getElementById('overlay');
+
+        enableLocationButton.addEventListener('click', () => {
+            overlay.classList.add('active');
+        });
+
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                overlay.classList.remove('active');
+            }
+        });
+        function openModal() {
+            document.getElementById("locationModal").classList.add("show");
+        }
+
+        function closeModal() {
+            document.getElementById("locationModal").classList.remove("show");
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchInput = document.getElementById("searchInput");
+
+            searchInput.addEventListener("keyup", function (event) {
+                if (event.key === "Enter" && searchInput.value.trim() !== "") {
+                    window.location.href = "phone8.html"; // Replace with your actual page
+                }
+            });
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+            const button2 = document.querySelector(".button2"); // Select the div with class "button2"
+
+            button2.addEventListener("click", function () {
+                window.location.href = "phone8.html"; // Change to your target page
+            });
+        });
+        document.querySelector(".search-bar").onclick = function () {
+            window.location.href = "phone8.html";
+        };
+
+    </script>
+</body>
+
+</html>

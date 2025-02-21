@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=428, height=926, initial-scale=1.0">
+    <title>Choose Language</title>
+    <style>
+        body {
+            font-family: "Poppins", serif;
+            font-weight: 300;
+            font-style: normal;
+            font-size: 19px;
+            background-color: #E8F3D8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            width: 430px;
+            /* Fixed width for iPhone */
+            height: 926px;
+            /* Fixed height for iPhone */
+        }
+
+        /* Background Image */
+        .top-section {
+            position: static;
+            background: url(5img.jpg) no-repeat center center;
+            background-size: 100%;
+            height: 500px;
+            width: 452px;
+            margin-top: -625px;
+            margin-left: 1px;
+        }
+
+        /* Language Selection Card */
+        .language-container {
+            width: 365px;
+            background: white;
+            border-radius: 40px;
+            padding: 20px;
+            position: absolute;
+            top: 250px;
+            height: 620px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .language-container h2 {
+            font-size: 27px;
+            color: #000000;
+            font-weight: 500;
+            display: flex;
+            margin-top: 10px;   
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .language-container h2 img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .language-list {
+            margin-top: 10px;
+        }
+
+        .language-btn {
+            width: 100%;
+            height: 70px;
+            padding: 15px;
+            margin: 6px 0;
+            background: #E8F3D8;
+            border: 2px solid #8CC13E;
+            border-radius: 40px;
+            font-family: "Poppins", serif;
+            font-weight: 500;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+            text-align: center;
+        }
+
+        .continue-btn {
+            width: 100%;
+            height: 70px;
+            padding: 15px;
+            background: #8CC13E;
+            border: none;
+            border-radius: 40px;
+            font-family: "Poppins", serif;
+            font-weight: 500;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            position: sticky;
+            /* margin-top: 10px; */
+        }
+
+        .continue-btn:hover {
+            background: #66ad4a;
+        }
+        .language-list {
+            flex-grow: 1; /* Allows scrolling */
+            overflow-y: auto;
+            padding-bottom: 20px; /* Prevents overlap */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-section"></div>
+
+    <div class="language-container">
+        <h2>
+            <img src="language.png" style="height:45px;width:42px;" alt="Language Icon">
+            Choose Language
+        </h2>
+        <div class="language-list">
+            <button class="language-btn">English</button>
+            <button class="language-btn">Hindi</button>
+            <button class="language-btn">Gujarati</button>
+            <button class="language-btn">Punjabi</button>
+            <button class="language-btn">Marathi</button>
+            <button class="language-btn">Malayalam</button>
+            <button class="language-btn">Nepali</button>
+            <button class="language-btn">Kashmiri</button>
+            <button class="language-btn">Sindhi</button>
+            <button class="language-btn">Bengali</button>
+        </div>
+        <button class="continue-btn" style="margin-bottom: 20px;color: none;">Continue</button>
+    </div>
+    <script>document.querySelector(".continue-btn").onclick = function () {
+        window.location.href = "phone9.html";
+    };
+    </script>
+</body>
+
+</html>

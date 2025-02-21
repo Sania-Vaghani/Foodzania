@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 429px; /* Fixed width for iPhone */
+            height: 926px; /* Fixed height for iPhone */
+            background: url(18bg.png) no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* Main Content */
+        .content {
+            text-align: center;
+            padding: 20px;
+            margin-top: -50px;
+        }
+
+        .content h3 {
+            font-size: 17px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .content h2 {
+            font-size: 20px;
+            color: #8CC13E;
+            font-weight: 600;
+            text-transform: uppercase;
+            line-height: 1.4;
+            font-size: 23px;
+            font-weight: 400;
+        }
+
+        /* Image Section */
+        .illustration img {
+            width: 260px;
+            margin: 15px 0;
+        }
+
+        /* Track Order Button */
+        .track-order-btn {
+            background-color: #8CC13E;
+            color: white;
+            font-size: 22px;
+            font-weight: 400;
+            padding: 14px 30px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            width: 95%;
+            max-width: 300px;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .track-order-btn:hover {
+            background-color: #6ea12c;
+        }
+
+        /* Order Something Else */
+        .order-more {
+            margin-top: 50px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h3>WE MUST SAY</h3>
+        <h2>YOU’VE GREAT <br> CHOICE OF TASTE</h2>
+        
+        <!-- Illustration -->
+        <div class="illustration">
+            <img src="okimg.png" alt="Person Showing OK Gesture">
+        </div>
+
+        <!-- Track Order Button -->
+        <button class="track-order-btn" onclick="navigateToTracking()">TRACK MY ORDER</button>
+
+
+        <!-- Order Something Else -->
+        <p class="order-more">Order Something Else</p>
+    </div>
+
+    <!-- Bottom Green Wave -->
+    <div class="footer"></div>
+    <script>
+        function navigateToTracking() {
+            window.location.href = "phone19.html"; // Redirects to phone19.html
+        }
+    </script>
+    
+</body>
+</html>

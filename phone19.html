@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Tracking</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100vh;
+            background: #f5f5f5;
+            overflow-y: auto;
+        }
+
+        /* Header Section */
+        .header {
+            background: #8CC13E;
+            color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header h2 {
+            font-size: 22px;
+            font-weight: 600;
+            display: flex;
+            margin-top: -3px;
+            align-items: center;
+        }
+
+        .header h2 img {
+            width: 50px;
+            margin :5px 10px 0 0;
+        }
+
+        .cancel-btn {
+            font-size: 17px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        /* Order Details */
+        .order-info {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background: white;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .order-info div {
+            font-size: 17px;
+            width: 50%;
+        }
+
+        .order-info span {
+            font-weight: 600;
+            display: block;
+            font-size: 17px;
+            margin-top: 3px;
+        }
+
+        /* Order Tracking Steps */
+        .tracking {
+            padding: 20px;
+            position: relative;
+        }
+
+        .timeline {
+            position: absolute;
+            left: 30px;
+            width: 3px;
+            height: 85%;
+            background: lightgray;
+            top: 15px;
+            border-radius: 5px;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 45px;
+            position: relative;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            background: red;
+            border-radius: 50%;
+            position: absolute;
+            left: 24px;
+            z-index: 10;
+        }
+
+        .status-dot.green {
+            background: rgb(32, 223, 32);
+        }
+
+        .step img {
+            width: 45px;
+            margin-left: 50px;
+        }
+
+        .step-text {
+            margin-left: 15px;
+        }
+
+        .step-text h4 {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .step-text p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Delivery Address */
+        .delivery {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: left;
+        }
+
+        .delivery h3 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .delivery span {
+            color: green;
+            font-size: 19px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .map {
+            width: 100%;
+            height: 180px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .map img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .address {
+            font-size: 16px;
+            color: #333;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">
+        <h2><img src="car.png" alt="Truck"> TRACK MY ORDER</h2>
+        <span class="cancel-btn" onclick="cancelOrder()">CANCEL</span>
+
+    </div>
+
+    <!-- Order Details -->
+    <div class="order-info">
+        <div>
+            ESTIMATED TIME <br>
+            <span>30 minutes</span>
+        </div>
+        <div>
+            ORDER NUMBER <br>
+            <span>#85321</span>
+        </div>
+    </div>
+
+    <!-- Order Tracking Steps -->
+    <div class="tracking">
+        <div class="timeline"></div>
+
+        <div class="step">
+            <div class="status-dot green"></div>
+            <img src="D1.png" alt="Order Placed" style="margin-top: 15px;">
+            <div class="step-text">
+                <h4>Order Placed</h4>
+                <p>We have received your order.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="status-dot green"></div>
+            <img src="D2.png" alt="Order Confirmed">
+            <div class="step-text">
+                <h4>Order Confirmed</h4>
+                <p>Your order has been confirmed.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="status-dot green"></div>
+            <img src="D3.png" alt="Order Processed">
+            <div class="step-text">
+                <h4>Order Processed</h4>
+                <p>We are preparing your order.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="status-dot"></div>
+            <img src="D4.png" alt="Order Dispatched">
+            <div class="step-text">
+                <h4>Order Dispatched</h4>
+                <p>Your order has been dispatched.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delivery Address -->
+    <div class="delivery" onclick="goToDeliveryPage()"> 
+        <h3>Delivery Address <span>Click ↓</span></h3>
+        <div class="map">
+            <img src="Map_Track.png" alt="Map">
+        </div>
+        <p class="address">A-76 Hans Society, Mota Varachha, Surat</p>
+    </div>
+    <script>
+        function cancelOrder() {
+            window.location.href = "phone9.html"; // Redirects to phone9.html
+        }
+    
+        function goToDeliveryPage() {
+            window.location.href = "phone20.html"; // Redirects to phone20.html
+        }
+    </script>
+</body>
+</html>

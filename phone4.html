@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Waterfall&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <title>Foodzania Login</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 926px;
+            background: url('4bg.png') no-repeat center center fixed;
+            background-size: cover;
+            font-family: sans-serif;
+        }
+
+        .logo {
+            margin-top: 45px;
+            font-size: 95px;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            font-family: 'Waterfall', cursive;
+            font-weight: 500;
+        }
+
+        .content {
+            font-family: "Poppins", serif;
+            font-weight: 300;
+            font-style: normal;
+            font-size: 19px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            width: 350px;
+            max-height: 590px;
+            border-radius: 50px;
+            background-color: #fff;
+            opacity: 0.89;
+            align-self: center;
+            margin-top: 30px;
+        }
+
+        .title {
+            font-size: 33px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 20px;
+            margin-top: 30px;
+        }
+
+        button {
+            background: #BADA8B;
+            color: black;
+            font-family: "Poppins", serif;
+            font-weight: 600;
+            font-style: normal;
+            font-size: 23px;
+            text-transform: uppercase;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 95px;
+            text-decoration: none;
+            width: 200px;
+            margin-top: 35px;
+            letter-spacing: 1px;
+            height: 57px;
+        }
+
+        .input-box {
+            position: relative;
+            width: 280px;
+            height: 40px;
+            margin: 30px 0;
+            transform: translateY(-50%);
+            margin-top: 45px;
+            align-self: center;
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 100%;
+            outline: none;
+            border: none;
+            border: 3px solid #8CC13E;
+            border-radius: 50px;
+            padding: 10px;
+            padding-left: 60px;
+            margin-left: -35px;
+            font-family: "Poppins", serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 20px;
+            z-index: 55;
+            color: #000000
+        }
+
+        .input-box input::placeholder {
+            color: #7e7e7e;
+            font-family: "Poppins", serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 19px;
+
+        }
+
+        .input-box img {
+            position: absolute;
+            height: 33px;
+            transform: translateY(40%);
+            margin-left: -13px;
+        }
+
+
+        .remember-me {
+            display: flex;
+            gap:25px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-right: 15px;
+        }
+
+        .remember-styling{
+            margin-top: -10px;
+            margin-left: 13px;
+        }
+
+        .forgot-password {
+            color: #000000;
+            text-decoration: none;
+            margin-left: 50px;
+            margin-top: -20px;
+        }
+        p{
+            font-size: 18px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="logo">Foodzania</div>
+
+
+    <div class="content">
+        <h1 class="title">Welcome Back</h1>
+        <center>
+            <div class="input-box">
+                <img src="user.png">
+                <input type="text" placeholder="Username or Email" required>
+            </div>
+            <div class="input-box">
+                <img src="lock.png">
+                <input type="password" placeholder="Password" required>
+            </div>
+            <div class="remember-me">
+                <input type="checkbox" class="remember-styling" style="margin-right: 1px;margin-top: -15px;">
+                <label class="remember-styling" style="margin-left: -20px; margin-top: -20px;">Remember Me</label>
+                <a href="#" class="forgot-password">Forgot Password?</a>
+            </div>
+            <button type="submit">
+                <a href="phone9.html" style="text-decoration: none;color: #000000;">Log In</a>
+            </button>
+            
+            <p style="color: #000000;">Don't have an account? <a href="phone5.html" style="color: #8CC13E;">Sign Up</a> now<br><br>or login in with</p>
+        </center>
+        <div class="social-login">
+            <a href="#"><img src="social.png"></a>
+        </div>
+    </div>
+</body>
+
+</html>

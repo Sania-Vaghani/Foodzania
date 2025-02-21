@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery App</title>
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: "Poppins", serif;
+            font-weight: 300;
+            font-style: normal;
+            font-size: 19px;
+            background-color: #E8F3D8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            width: 430px; /* Fixed width for iPhone */
+            height: 926px;/* Fixed height for iPhone */
+        }
+
+        /* Background Image */
+        .top-section {
+            background: url(5img.jpg) no-repeat center center;
+            background-size: 100%;
+            height: 500px;
+            width: 452px;
+            margin-top: -45px;
+            position: static;
+        }
+
+        /* Content Wrapper */
+        .content {
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            border-radius: 20px 20px 0 0;
+            margin-top: -50px;
+        }
+
+        /* Heading Text */
+        .content h1 {
+            font-size: 28px;
+            color: #000000;
+            margin-top: 10px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .content p {
+            font-size: 16px;
+            color: #000000;
+            margin: 10px 0 40px 0;
+            font-weight: 500;
+        }
+
+        .input-container1{
+            display: flex;
+            padding: 10px;
+            margin-left: 130px;
+            width: 100%;
+            border-radius: 10px;
+            max-width: 50px;
+            height:39px;
+            background-color: white;
+            border: 1px solid #000000;
+            margin-left:30px;
+        }
+
+        /* Phone Number Input Section */
+        .input-container {
+            display: flex;
+            margin-top: -60px;
+            align-items: center;
+            background-color: white;
+            border: 1px solid #000000;
+            border-radius: 10px;
+            padding: 10px;
+            margin-left: 115px;
+            width: 100%;
+            height:39px;
+            max-width: 270px;
+        }
+
+        .input-container1 img {
+            height: 30px;
+            align-self: center;
+        }
+
+        .input-container input {
+            border: none;
+            outline: none;
+            flex-grow: 1;
+            font-family: "Poppins", serif;
+            font-weight: 300;
+            font-style: normal;
+            font-size: 19px;
+        }
+
+        .input-container input::placeholder {
+            color: #888888;
+        }
+
+        h3{
+            font-weight: 500;
+        }
+
+        /* Continue Button */
+        button {
+            background: #BADA8B;
+            color: white;
+            font-family: "Poppins", serif;
+            font-weight: 600;
+            font-style: normal;
+            font-size: 23px;
+            text-transform: uppercase;
+            padding: 12px 30px;
+            border: 2px solid #8CC13E;
+            border-radius: 95px;
+            display: flex;
+            align-self: center;
+            justify-content: center;
+            text-decoration: none;
+            width: 370px;
+            margin : 55px 0 40px 40px;
+        }
+        /* Footer Text */
+        .content footer {
+            font-size: 15px;
+            color: #000000;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Section with Background Image -->
+    <div class="top-section"></div>
+
+    <!-- Content Section -->
+    <div class="content">
+        <h1>India's Best Food Delivery<br>and Dining App</h1>
+        <p>-----------   Log in or Sign up   -----------</p>
+        <div class="input-container1">
+            <img src="india.png" alt="Country Flag">
+            <img src="down.png">
+        </div>
+        <div class="input-container">
+            <h3>+91</h3>
+            <input type="text" placeholder=" Enter phone Number" required>
+        </div>
+        <button onclick="navigateToNext()">Continue</button>
+        <p>or</p>
+        <div class="social-login">
+            <img src="social.png" alt="Google Login">
+        </div>
+        <footer>
+            By continuing you agree to our terms of service, privacy policy, and content policy.
+        </footer>
+    </div>
+    <script>
+        function navigateToNext() {
+            window.location.href = "phone6.html";
+        }
+    </script>
+</body>
+
+</html>

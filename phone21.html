@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurants List</title>
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #F8F8F8;
+            margin: 0;
+            padding: 0;
+            width: 428px;
+            height: 926px;
+            overflow-y: scroll;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+        }
+
+        .header img {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .header h3 {
+            color: #888888;
+            font-size: 18px;
+            font-weight: 500;
+            margin: 0;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        h4 {
+            margin: 20px 0 0 15px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .search-container {
+            width: 310px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 8px;
+            border: 2px solid #8CC13E;
+            padding: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-container input {
+            font-family: "Poppins", sans-serif;
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 18px;
+            font-weight: 400;
+            color: #777;
+            padding-left: 10px;
+        }
+
+        .search-container img {
+            cursor: pointer;
+            height: 24px;
+            width: auto;
+        }
+
+        .cuisine {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .cuisine img {
+            width: 125px;
+            height: 125px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            bottom: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            border-radius: 35px 35px 0 0;
+            transition: bottom 0.5s ease-in-out;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .overlay.active {
+            bottom: 1px;
+        }
+
+        .overlay-content {
+            text-align: left;
+        }
+
+        .close-area {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 999;
+        }
+
+        .close-area.active {
+            display: block;
+        }
+
+        /* Price Slider */
+        .price-range {
+            position: relative;
+            width: 100%;
+        }
+
+        .slider {
+            width: 100%;
+            -webkit-appearance: none;
+            height: 6px;
+            border-radius: 5px;
+            background: #cce3b5;
+            outline: none;
+            opacity: 0.9;
+            transition: opacity .15s ease-in-out;
+        }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #8CC13E;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #8CC13E;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* Price label */
+        .price-label {
+            position: absolute;
+            background: #8CC13E;
+            color: white;
+            padding: 4px 8px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            transform: translate(-50%, -30px);
+        }
+
+        /* Sort Buttons */
+        .sort-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: left;
+            gap: 10px;
+        }
+
+        .sort-btn {
+            font-family: "Poppins", serif;
+            font-weight: 400;
+            font-size: 15px;
+            padding: 8px 15px;
+            border-radius: 6px;
+            border: 1px solid #8CC13E;
+            background: #f0f8e8;
+            color: #4a7c20;
+            cursor: pointer;
+        }
+
+        /* Rating */
+        .rating {
+            display: flex;
+            justify-content: left;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .rating span {
+            background: #f0f8e8;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Toggle Switch */
+        .toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .toggle input {
+            width: 40px;
+            height: 20px;
+            appearance: none;
+            background: #ccc;
+            border-radius: 15px;
+            position: relative;
+            cursor: pointer;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .toggle input:checked {
+            background: #8CC13E;
+        }
+
+        .toggle input:before {
+            content: "";
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 14px;
+            height: 14px;
+            background: white;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .toggle input:checked:before {
+            left: 22px;
+        }
+
+        .toggle span {
+            font-size: 16px;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            background: white;
+
+        }
+
+        .categories div {
+            padding-bottom: 3px;
+            padding-top: -20px;
+            border-radius: 3px;
+            font-size: 18px;
+            font-weight: 500;
+            
+        }
+
+        .restaurant {   
+            margin-top:15px;
+            margin-bottom: -25px;
+            display: flex;
+        }
+
+        .restaurant img {
+            width: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="header" style="margin-top: 13px;">
+        <img src="arrow.png" alt="Back" onclick="navigateBack()" style="cursor: pointer;">
+
+        <h3>Search for dishes & restaurants</h3>
+    </div>
+
+    <div style="display: flex;justify-content: center;align-items: center;margin-top: 7px;">
+        <div class="search-container">
+            <img src="search.png" alt="Search">
+            <input type="text" id="searchInput" placeholder="Pizza">
+            <img src="filter.png" alt="Filter" style="margin-right: 5px;" onclick="openFilter()">
+        </div>
+        <div class="close-area" onclick="closeFilter()">
+        </div>
+        <!-- Filter Overlay -->
+        <div class="overlay">
+            <div class="overlay-content">
+                <h3><img src="filter.png" style="margin-right: 10px;">Filter By Search</h3>
+
+                <!-- Price Range -->
+                <p>Price</p>
+                <div class="price-range">
+                    <span class="price-label" id="price-label" style="justify-self: center">₹300</span>
+                    <input type="range" min="100" max="500" value="300" class="slider" id="price-slider">
+                </div>
+
+                <!-- Sort By -->
+                <p>Sort by</p>
+                <div class="sort-options">
+                    <button class="sort-btn">Pro</button>
+                    <button class="sort-btn">High Price</button>
+                    <button class="sort-btn">Low Price</button>
+                    <button class="sort-btn">Nearest</button>
+                    <button class="sort-btn">Veg</button>
+                    <button class="sort-btn">Non-Veg</button>
+                </div>
+
+                <!-- Rating -->
+                <p>Rating</p>
+                <div class="rating">
+                    <span>⭐ 1</span>
+                    <span>⭐ 2</span>
+                    <span>⭐ 3</span>
+                    <span>⭐ 4</span>
+                    <span>⭐ 5</span>
+                </div>
+
+                <!-- Additional Services -->
+                <p>Additional Services</p>
+                <div class="toggle">
+                    <span>Pay by Credit Card</span>
+                    <input type="checkbox">
+                </div>
+                <div class="toggle">
+                    <span>Discount Price</span>
+                    <input type="checkbox">
+                </div>
+                <div class="toggle">
+                    <span>Pre Order</span>
+                    <input type="checkbox">
+                </div>
+                <div class="toggle">
+                    <span>Cash on Delivery</span>
+                    <input type="checkbox" checked>
+                </div>
+            </div>
+        </div>
+        <div class="search-container" style="width: 35px;margin-left: 8px;">
+            <img src="mic.png" alt="Mic" style="margin-left: 6px;height: 29px;">
+        </div>
+    </div>
+    <hr style="margin-top: 20px;border: 4px solid #e6e6e6;">
+    <div class="categories">
+        <div style="border-bottom: 4px solid red;">Restaurants</div>
+        <div>Dishes</div>
+    </div>
+    
+    <div class="restaurants-list">
+        <div class="restaurant">
+            <a href="phone22.html">
+                <img src="piz1.png" alt="Pizza">
+            </a>
+        </div>
+        <div class="restaurant">
+            <img src="piz2.png" alt="Pizza">
+        </div>
+        <div class="restaurant">
+            <img src="piz3.png" alt="Pizza">
+        </div>
+        <div class="restaurant">
+            <img src="piz4.png" alt="Pizza">
+        </div>
+        <div class="restaurant">
+            <img src="piz5.png" alt="Pizza">
+        </div>
+        <div class="restaurant">
+            <img src="piz6.png" alt="Pizza">
+        </div>
+        <div class="restaurant">
+            <img src="piz7.png" alt="Pizza">
+        </div>
+    </div>
+    <script>
+        function openFilter() {
+            document.querySelector(".overlay").classList.add("active");
+            document.querySelector(".close-area").classList.add("active");
+        }
+
+        function closeFilter() {
+            document.querySelector(".overlay").classList.remove("active");
+            document.querySelector(".close-area").classList.remove("active");
+        }
+
+        // Price slider logic
+        const slider = document.getElementById("price-slider");
+        const priceLabel = document.getElementById("price-label");
+
+        slider.addEventListener("input", function () {
+            priceLabel.textContent = `₹${this.value}`;
+            let percent = ((this.value - this.min) / (this.max - this.min)) * 100;
+            priceLabel.style.left = `calc(${percent}% - 20px)`;
+        });
+    </script>
+    <script>
+        function navigateBack() {
+            window.location.href = "phone9.html"; // Change this to your actual page
+        }
+    </script>
+</body>
+</html>

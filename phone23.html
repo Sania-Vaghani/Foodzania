@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 429px;
+            height: 926px;
+            background: url(23bg.png) no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 15px;
+            top: 20px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .header {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            border: 2px solid #547425;
+            font-size: 20px;
+            font-weight: 500;
+            padding: 2px 50px;
+            border-radius: 10px;
+            width: 250px;
+            height: 50px;
+            text-align: center;
+            line-height: 45px;
+            align-self: center;
+            margin-top: -100px;
+        }
+
+        .header h1 {
+            font-size: 22px;
+            font-weight: 500;
+        }
+
+        .savings-banner {
+            margin-top: 30px;
+            background: #1C270C;
+            color: #8CC13E;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .savings-banner img {
+            width: 60px;
+        }
+
+        .delivery {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            font-size: 17px;
+            font-weight: 500;
+            color: #000000;
+            margin-top: 10px;
+            background: white;
+            gap: 10px;
+        }
+
+        .title {
+            text-align: center;
+            margin-top: 5px;
+            color: #888888;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin: 10px;
+            position: relative;
+        }
+
+        .cart-item img {
+            width: 428px;
+            margin-left: -10px;
+        }
+
+        .counter {
+            display: flex;
+            align-items: center;
+            background: #E8F3D8;
+            border: 2px solid #8CC13E;
+            border-radius: 5px;
+            padding: 5px;
+            position: absolute;
+            right: 15px;
+        }
+
+        .counter button {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: #8CC13E;
+            cursor: pointer;
+        }
+
+        .counter span {
+            font-size: 16px;
+            margin: 0 8px;
+            font-weight: bold;
+            color: #2F4F17;
+        }
+
+        .bill-summary {
+            background: white;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 7pxpx;
+            width: 100%;
+            margin-left: -3px;
+        }
+
+        .bill-summary div {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .bill-summary .total {
+            font-size: 16px;
+            font-weight: 700;
+            color: #2F4F17;
+        }
+
+        .next-btn {
+            position: absolute;
+            bottom: 25px;
+            width: 100%;
+            max-width: 390px;
+            background: #74B51A;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-top: -50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main-container">
+        <button class="back-btn" onclick="goBack()">
+            <img src="back_button.png" alt="Back">
+        </button>
+
+        <div class="header">
+            <h1>MY CART</h1>
+        </div>
+
+        <div class="savings-banner">
+            <img src="emoji.png" alt="Coin">
+            <span>You saved ₹19 on this order</span>
+        </div>
+
+        <div class="delivery">
+            <img src="timer.png"> Delivery in <span>20-25 min</span>
+        </div>
+        <div class="title" style="margin-bottom: -7px" ;>ITEM(S) ADDED</div>
+        <div class="cart-item">
+            <img src="bill.png" alt="Pizza">
+            <div class="counter">
+                <button onclick="updateCount(-1)">−</button>
+                <span id="item-count">1</span>
+                <button onclick="updateCount(1)">+</button>
+            </div>
+        </div>
+        <div class="title" style="margin-top: -8px;margin-bottom: 5px;">SAVING CORNER</div>
+        <div class="coupon-section">
+            <img src="coupons.png">
+        </div>
+        <div class="title" style="margin-top: -3px;margin-bottom: -6px;">BILL SUMMARY</div>
+        <div class="bill-summary">
+            <div>
+                <span>Subtotal</span>
+                <span>₹<span id="subtotal">120</span></span>
+            </div>
+            <div>
+                <span>GST and restaurant charges</span>
+                <span>₹40</span>
+            </div>
+            <div>
+                <span>Delivery partner fee</span>
+                <span style="color: #74B51A;">FREE</span>
+            </div>
+            <span>---------------------------------------------</span>
+            <div class="total">
+                <span>Grand Total</span>
+                <span>₹<span id="grand-total">160</span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="next-btn" onclick="goToNextPage()">NEXT ></div>
+
+
+    <script>
+        let itemPrice = 120; // Base price of one item
+        let gstCharges = 40; // Fixed GST charges
+
+        function updateCount(change) {
+            let countSpan = document.getElementById("item-count");
+            let subtotalSpan = document.getElementById("subtotal");
+            let grandTotalSpan = document.getElementById("grand-total");
+
+            let count = parseInt(countSpan.innerText) + change;
+
+            if (count >= 1) {
+                countSpan.innerText = count;
+                let newSubtotal = itemPrice * count;
+                subtotalSpan.innerText = newSubtotal;
+                grandTotalSpan.innerText = newSubtotal + gstCharges;
+            }
+        }
+
+        function goToNextPage() {
+            window.location.href = "phone17.html"; // Redirects to phone17.html
+        }
+        function goBack() {
+            window.location.href = "phone9.html";
+        }
+    </script>
+</body>
+</html>

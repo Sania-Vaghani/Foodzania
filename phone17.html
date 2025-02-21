@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 429px;
+            /* Fixed width for iPhone */
+            height: 926px;
+            /* Fixed height for iPhone */
+            background: url(17bg.png) no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px 0;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .checkout-btn {
+            width: 70%;
+            background-color: #8CC13E;
+            color: white;
+            font-size: 22px;
+            font-weight: 500;
+            padding: 8px;
+            border: 2px solid #547425;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .section {
+            padding: 10px;
+            margin-top: -450px;
+        }
+
+        label {
+            font-size: 17px;
+            font-weight: 500;
+        }
+
+        .input-box {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #8CC13E;
+            font-size: 14px;
+            border-radius: 5px;
+            margin-top: 8px;
+            background: white;
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+            padding: 19px;
+            background: white;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .payment-options label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 400;
+            font-size: 16px;
+        }
+
+        .total {
+
+            background-color: #8CC13E;
+            color: white;
+            font-size: 21px;
+            padding: 15px;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .card-details {
+            display: none;
+            opacity: 0;
+            position: absolute;
+            top: 390px;
+            left: 50%;
+            transform: translate(-50%, 100px) scale(0.9);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .card-details img {
+            width: 400px;
+        }
+
+        .wallet-details {
+            display: none;
+            opacity: 0;
+            position: absolute;
+            top: 290px;
+            left: 50%;
+            transform: translate(-50%, 100px) scale(0.9);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            text-align: center;
+            z-index: 1;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .payment-section {
+            margin-top: 15px;
+            font-size: 19px;
+            font-weight: 500;
+            text-transform: uppercase;
+            color: #666;
+            border-top: 1px solid #939393;
+            padding-top: 10px;
+        }
+
+        .payment-box {
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .payment-box img {
+            height: 45px;
+            margin-right: 10px;
+        }
+
+        .payment-box div {
+            display: flex;
+            align-items: center;
+        }
+
+        .payment-box span {
+            font-size: 19px;
+            font-weight: 500;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="#" class="back-arrow" onclick="goBack()">
+                <img src="backarrow.png" style="width: 35px; margin-right: 28px; margin-left: -8px;">
+            </a>
+
+            <div class="checkout-btn">CHECKOUT</div>
+        </div>
+        <div class="section">
+            <label>Delivery</label>
+            <input type="text" class="input-box" value="A-76 Hans Society, Mota Varracha, Surat" disabled>
+            <input type="text" class="input-box" placeholder="Phone number">
+        </div>
+
+        <div class="section">
+            <label>Payment</label>
+            <div class="payment-options">
+                <label><input type="radio" name="payment" onclick="toggleCardDetails(true)"> Credit Card</label>
+                <label><input type="radio" name="payment" onclick="toggleWalletDetails(true)"> Wallet</label>
+                <label><input type="radio" name="payment" onclick="toggleUPIDetails(true)"> Pay via UPI</label>
+                <label><input type="radio" name="payment" onclick="hideAllPaymentSections()"> Cash on Delivery</label>
+
+            </div>
+        </div>
+        <div class="card-details" id="cardDetails">
+            <img src="CARD.png" alt="Credit Card Details">
+        </div>
+
+        <!-- Wallet Details Section -->
+        <div class="wallet-details" id="walletDetails" style="display: none; opacity: 0;">
+            <div class="payment-section">Wallets</div>
+            <div class="payment-box">
+                <div>
+                    <img src="paytm.png" alt="Paytm">
+                    <span>Link your Paytm wallet</span>
+                </div>
+                <span><img src="rightarrow.png" style="height: 17px;"></span>
+            </div>
+        </div>
+
+        <!-- UPI Details Section -->
+        <div class="wallet-details" id="upiDetails" style="display: none; opacity: 0;">
+            <div class="payment-section">UPI Payment</div>
+            <div class="payment-box">
+                <div>
+                    <img src="upi.png" alt="GPay">
+                    <span>Pay via Google Pay</span>
+                </div>
+                <span><img src="rightarrow.png" style="height: 17px;"></span>
+            </div>
+        </div>
+
+        <div class="total" onclick="navigateToPayment(),placeOrder()">
+            <span>Total to Pay :</span> <span>₹ 160</span>
+        </div>
+
+    </div>
+    <script>
+        function hideAllPaymentSections() {
+            const sections = ["cardDetails", "walletDetails", "upiDetails"];
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                element.style.opacity = "0";
+                element.style.display = "none";  // Hide instantly
+            });
+        }
+
+        function toggleCardDetails(show) {
+            hideAllPaymentSections(); // Hide all sections first
+            if (show) {
+                const cardDetails = document.getElementById("cardDetails");
+                cardDetails.style.display = "block";
+                setTimeout(() => {
+                    cardDetails.style.opacity = "1";
+                    cardDetails.style.transform = "translate(-50%, 0) scale(1)";
+                }, 10);
+            }
+        }
+
+        function toggleWalletDetails(show) {
+            hideAllPaymentSections(); // Hide all sections first
+            if (show) {
+                const walletDetails = document.getElementById("walletDetails");
+                walletDetails.style.display = "block";
+                setTimeout(() => {
+                    walletDetails.style.opacity = "1";
+                }, 10);
+            }
+        }
+
+        function toggleUPIDetails(show) {
+            hideAllPaymentSections(); // Hide all sections first
+            if (show) {
+                const upiDetails = document.getElementById("upiDetails");
+                upiDetails.style.display = "block";
+                setTimeout(() => {
+                    upiDetails.style.opacity = "1";
+                }, 10);
+            }
+        }
+
+        function goBack() {
+            window.location.href = "phone23.html"; // Redirect to phone23.html
+        }
+
+        function navigateToPayment() {
+            window.location.href = "phone18.html"; // Redirects to phone18.html
+        }
+        function placeOrder() {
+            let selectedPayment = document.querySelector('input[name="payment"]:checked');
+            let payMode = selectedPayment ? selectedPayment.parentNode.textContent.trim() : "Unknown";
+
+            fetch("/place_order", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ pay_mode: payMode })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.redirect_url) {
+                        window.location.href = data.redirect_url; // Redirect if successful
+                    } else {
+                        alert(data.message || "Order failed. Please try again.");
+                    }
+                })
+                .catch(error => console.error("Error:", error));
+        }
+    </script>
+</body>
+
+</html>

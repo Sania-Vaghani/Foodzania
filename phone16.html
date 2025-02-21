@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=430, height=932, initial-scale=1.0">
+    <title>Order History</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 429px; /* Fixed width for iPhone */
+            height: 926px; /* Fixed height for iPhone */
+            background: url(16bg.png) no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            background-color: #E8F3D8;
+            color: black;
+            border: 2px solid #547425;
+            font-size: 24px;
+            font-weight: 600;
+            padding: 10px;
+            border-radius: 10px;
+            width: 90%;
+            margin: 50px auto 10px;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .section {
+            width: 90%;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 15px;
+            top: 20px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .image{
+            width: 428px;
+            margin-left: -22px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="back-btn" onclick="goBack()">
+            <img src="back_button.png" alt="Back">
+        </button>
+        <div class="header">ORDER HISTORY</div>
+    </div>
+
+    <div class="section">
+        <img class="image" src="Active.png">
+    </div>
+
+    <div class="section">
+        <img src="Past.png" class="image" style="margin-top: -30px;">
+        <img src="PO1.png" class="image" style="margin-top: 6px;">
+        <img src="PO2.png" class="image" style="margin-top: 6px;">
+        <img src="PO3.png" class="image" style="margin-top: 6px;">
+        <img src="PO4.png" class="image" style="margin-top: 6px;">
+        <img src="PO5.png" class="image" style="margin-top: 6px;">
+        <img src="PO6.png" class="image" style="margin-top: 6px;">
+        <img src="P7.png" class="image" style="margin-top: 6px;margin-bottom:25px;">
+    </div>
+
+    <!-- <a href="#" class="back-arrow"><img src="whitearrow.png"></a> -->
+     <script>
+        function goBack() {
+            window.location.href = "phone11.html";
+        }
+     </script>
+</body>
+</html>
